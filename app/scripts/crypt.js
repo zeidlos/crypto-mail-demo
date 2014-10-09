@@ -71,16 +71,13 @@ var publicKey = openpgp.key.readArmored(pubKey)
 var privateKey = openpgp.key.readArmored(privKey).keys[0];
 privateKey.decrypt('1234');
 
-function textDecrypt () {
+function textDecrypt (cryptedText) {
   console.log('Decrypted')
-  pgpMessage = openpgp.message.readArmored(window.text.value)
-  window.text.value = openpgp.decryptMessage(privateKey, pgpMessage)
-  mail.message = window.text.value
+  pgpMessage = openpgp.message.readArmored(cryptedText)
+  return openpgp.decryptMessage(privateKey, pgpMessage)
 }
 
-function textEncrypt () {
+function textEncrypt (unencryptedText) {
   console.log('Encrypting')
-  cryptedText = openpgp.encryptMessage(publicKey.keys, window.text.value);
-  mail.message = cryptedText
-  window.text.value = cryptedText
+  return openpgp.encryptMessage(publicKey.keys, unencryptedText)
 }
