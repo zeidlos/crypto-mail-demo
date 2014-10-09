@@ -1,24 +1,18 @@
 // (function(){
   var btnCrypt = $('.glyphicon-lock')
   var cryptedText
+  var decryptedText
   var pgpMessage
   var preparedMessage
 
-  function prepareText () {
-    preparedMessage = text.value.split("\n")
-  }
-
   function textDecrypt () {
     console.log('Decrypted')
-    console.log(text.value)
-    prepareText()
-    pgpMessage = openpgp.message.readAmored(preparedMessage)
+    pgpMessage = openpgp.message.readArmored(text.value)
     text.value = openpgp.decryptMessage(privateKey, pgpMessage)
   }
 
   function textEncrypt () {
-    console.log('Encrypted')
-    console.log(text.value)
+    console.log('Encrypting')
     cryptedText = openpgp.encryptMessage(publicKey.keys, text.value);
     text.value = cryptedText
   }
