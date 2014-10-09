@@ -67,5 +67,3 @@ var privKey =
 var publicKey = openpgp.key.readArmored(pubKey);
 var privateKey = openpgp.key.readArmored(privKey).keys[0];
 privateKey.decrypt('')
-
-console.log(pgpMessage)
