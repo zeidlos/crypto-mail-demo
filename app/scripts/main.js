@@ -6,6 +6,7 @@
   var recipient = $('#recipient')
   var pgpMessage
   var mail = {
+    topic: 'Cryptoparty Test-Email',
     sender: 'demo@cryptoparty-hamburg.de',
     receiver: 'frank@frank.de',
     message: '',
@@ -16,7 +17,14 @@
 
   socket.on('message', function(data){
     console.log(data)
-    $('.jumbotron').text(data.message)
+    $('.to').text(data.receiver)
+    $('.date').text(data.timestamp)
+    $('.topic').text(data.topic)
+    $('.mail-content').text(data.message)
+    if (endpoint) {
+      $('.mail-content').text(textDecrypt(data.message))
+    };
+    
   })
 
   recipient.on('change', function() {
@@ -24,14 +32,16 @@
   })
 
   btnSend.on('click', function(){
-    mail.timestamp = Date.now()
+    mail.topic += ' ' + Date.now()
+    mail.timestamp = moment()
+    mail.timestamp = moment().format('MMMM Do YYYYY, h:mm:ss')
     mail.message = window.text.value
     console.log(mail)
     socket.emit('message', mail)
   })
 
   btnDecrypt.on('click', function(){
-    $('.jumbotron').text( textDecrypt( $('.jumbotron').text() ) )
+    $('.mail-content').text( textDecrypt( $('.mail-content').text() ) )
   })
 
   btnCrypt.on('click', function(){
