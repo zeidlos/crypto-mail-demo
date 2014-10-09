@@ -1,4 +1,4 @@
-
+'use strict';
 // var openpgp = window.openpgp
 var pubKey = 
 
@@ -23,7 +23,7 @@ var pubKey =
           'ys5vFt2OWDxX2riFuChcRsJx29Kw5FxnoOHRWj1lQAZPcArjvjDfkzG4bdEzCUrt',
           '=+V2Y',
           '-----END PGP PUBLIC KEY BLOCK-----'
-        ].join("\n")
+        ].join('\n')
 
 var privKey = 
         [
@@ -65,8 +65,22 @@ var privKey =
           'PWVABk9wCuO+MN+TMbht0TMJSu0=',
           '=NQ7s',
           '-----END PGP PRIVATE KEY BLOCK-----'
-        ].join("\n")
+        ].join('\n')
 
 var publicKey = openpgp.key.readArmored(pubKey)
 var privateKey = openpgp.key.readArmored(privKey).keys[0];
 privateKey.decrypt('1234');
+
+function textDecrypt () {
+  console.log('Decrypted')
+  pgpMessage = openpgp.message.readArmored(window.text.value)
+  window.text.value = openpgp.decryptMessage(privateKey, pgpMessage)
+  mail.message = window.text.value
+}
+
+function textEncrypt () {
+  console.log('Encrypting')
+  cryptedText = openpgp.encryptMessage(publicKey.keys, window.text.value);
+  mail.message = cryptedText
+  window.text.value = cryptedText
+}
