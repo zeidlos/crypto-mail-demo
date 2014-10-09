@@ -1,21 +1,35 @@
+'use strict';
 // (function(){
   var btnCrypt = $('.glyphicon-lock')
+  var btnSend = $('.btn-send')
+  var recipient = $('#recipient')
   var cryptedText
-  var decryptedText
   var pgpMessage
-  var preparedMessage
-
-  function textDecrypt () {
-    console.log('Decrypted')
-    pgpMessage = openpgp.message.readArmored(text.value)
-    text.value = openpgp.decryptMessage(privateKey, pgpMessage)
+  var mail = {
+    sender: 'demo@cryptoparty-hamburg.de',
+    receiver: 'frank@frank.de',
+    message: '',
+    timestamp: ''
   }
 
-  function textEncrypt () {
-    console.log('Encrypting')
-    cryptedText = openpgp.encryptMessage(publicKey.keys, text.value);
-    text.value = cryptedText
-  }
+  var socket = io('http://localhost:4223')
+
+  socket.on('connect', function(){
+    socket.on('event', function(data){});
+    socket.on('disconnect', function(){});
+  });
+
+  
+
+  recipient.on('change', function() {
+    mail.receiver = $(this).val()
+  })
+
+  btnSend.on('click', function(){
+    mail.timestamp = Date.now()
+    console.log(mail)
+    socket.emit('message', mail)
+  })
 
   btnCrypt.on('click', function(){
     if( $(this).hasClass('btn-danger') ) {
