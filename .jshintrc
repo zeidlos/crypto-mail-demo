@@ -21,6 +21,7 @@
   "jquery": true,
   "globals": {
     "io": false,
-    "openpgp": false
+    "openpgp": false,
+    "pgpMessage": false
   }
 }
