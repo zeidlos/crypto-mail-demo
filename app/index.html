@@ -29,20 +29,23 @@
 
 
     <div class="container">
-      
+      <h1>E-Mail-Client</h1>
       <div class="row">
         <div class="col-lg-6 col-md-6">
           <div class="jumbotron">
-            
             <p class="intro">
               Diese Demonstration soll veranschaulichen, wer welche Informationen sehen kann, wenn Sie eine E-Mail verschicken.
             </p>
             <h2>Probieren Sie es einfach!</h2>
-          </div>          
-
+          </div>
+          <div class="jumbotron">
+            <p class="intro">
+              Der E-Mail-Client ist Ihr Mailprogramm, wie z.B. Thunderbird, Mail.app oder Outlook.
+            </p>
+            <p>Alternativ auch das Webinterface Ihres E-Mail-Anbieters, wie Gmail, Web.de oder T-Online.</p>
+          </div>
         </div>
         <div class="col-lg-6 col-md-6">
-          <h2>Schreiben Sie eine E-Mail</h2>
           <form role="form">
             <h3>Empf&auml;nger:</h3>
             <select name="recipient" id="recipient">
@@ -50,11 +53,12 @@
                 <option>frank@de-mail.de</option>
                 <option>frank@gmail.com</option>
                 <option>frank@emailmadeingermany.de</option>
-            </select>
-
+            </select><br>
+            <input type="text" class="subject" id="subject" placeholder="Subject...">
             
             <textarea id="text" name="user_eingabe" cols="50" rows="10" placeholder="Please type your message ..."></textarea>
-            <div class="btn btn-danger btn-cryp glyphicon glyphicon-lock crypt"> Verschl&uuml;sseln</div>
+            <div class="btn btn-danger btn-crypt glyphicon glyphicon-lock ssl"> SSL</div>
+            <div class="btn btn-danger btn-crypt glyphicon glyphicon-lock crypt"> Verschl&uuml;sseln</div>
             <div class="btn btn-success btn-send glyphicon glyphicon-envelope"> Absenden</div>
           </form>
         </div>
