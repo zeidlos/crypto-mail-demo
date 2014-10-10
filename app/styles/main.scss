@@ -6,8 +6,26 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 /* Space out content a bit */
 body {
-  padding-top: 20px;
+  padding-top: 50px;
   padding-bottom: 20px;
+}
+
+h1 {
+  padding-bottom: 30px;
+}
+
+.subject {
+  width: 100%;
+}
+
+.metadata {
+  font-size: 30px;
+}
+
+.mail-content {
+  margin: 20px 0;
+  font-size: 30px;
+  font-family: Courier;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -41,11 +59,17 @@ textarea {
 }
 
 .btn-send {
-  width: 70%;
+  width: 100%;
 }
 
 .btn-crypt {
-  width: 50%;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.btn-ssl {
+  width: 100%;
+  margin-bottom: 5px;
 }
 
 .decrypt {
