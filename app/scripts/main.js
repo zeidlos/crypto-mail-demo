@@ -78,7 +78,12 @@
   })
 
   btnSSL.on('click', function(){
-    mail.ssl = true
+    if(mail.ssl) {
+      mail.ssl = false
+    } else {
+      mail.ssl = true
+    }
+
     $(this).toggleClass('btn-danger')
     $(this).toggleClass('btn-success')
   })
