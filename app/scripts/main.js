@@ -16,7 +16,7 @@
     pgp: false
   }
 
-  var socket = io('http://localhost:4223')
+  var socket = io('http://cryptoterrorist.net:4223')
 
   socket.on('message', function(data){
     console.log(data)
